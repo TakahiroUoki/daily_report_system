@@ -31,12 +31,6 @@ public class ReportValidator {
             errors.add(clientError);
         }
 
-        //進捗のチェック
-        String progressError = validateProgress(rv.getProgress());
-        if (!progressError.equals("")) {
-            errors.add(progressError);
-        }
-
         //内容のチェック
         String contentError = validateContent(rv.getContent());
         if (!contentError.equals("")) {
@@ -68,20 +62,6 @@ public class ReportValidator {
     private static String validateClient(String client) {
         if (client == null || client.equals("")) {
             return MessageConst.E_NOCLIENT.getMessage();
-        }
-
-        //入力値がある場合は空文字を返却
-        return "";
-    }
-
-    /**
-     * 進捗に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
-     * @param progress 進捗
-     * @return エラーメッセージ
-     */
-    private static String validateProgress(String progress) {
-        if (progress == null || progress.equals("")) {
-            return MessageConst.E_NOPROGRESS.getMessage();
         }
 
         //入力値がある場合は空文字を返却

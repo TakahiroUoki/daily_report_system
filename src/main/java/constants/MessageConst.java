@@ -26,7 +26,6 @@ public enum MessageConst {
     E_CLI_NUMBER_EXIST("入力された顧客番号の情報は既に存在しています。"),
     E_NOTITLE("タイトルを入力してください。"),
     E_NOCLIENT("担当顧客を入力してください。"),
-    E_NOPROGRESS("進捗を入力してください。"),
     E_NOCONTENT("内容を入力してください。");
 
     /**
