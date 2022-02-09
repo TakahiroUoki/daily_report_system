@@ -39,14 +39,14 @@ public class ReportView {
     private String title;
 
     /**
-     * 日報の進捗
-     */
-    private String progress;
-
-    /**
      * 担当顧客
      */
     private String client;
+
+    /**
+     * 日報の進捗
+     */
+    private String progress;
 
     /**
      * 日報の内容

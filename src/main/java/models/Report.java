@@ -76,16 +76,16 @@ public class Report {
     private String title;
 
     /**
-     * 日報の進捗
-     */
-    @Column(name = JpaConst.REP_COL_PROGRESS, length = 255, nullable = false)
-    private String progress;
-
-    /**
      * 担当顧客
      */
     @Column(name = JpaConst.REP_COL_CLI, length = 255, nullable = false)
     private String client;
+
+    /**
+     * 日報の進捗
+     */
+    @Column(name = JpaConst.REP_COL_PROGRESS, length = 255, nullable = false)
+    private String progress;
 
     /**
      * 日報の内容
