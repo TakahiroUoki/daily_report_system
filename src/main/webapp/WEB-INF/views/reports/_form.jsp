@@ -29,7 +29,7 @@
 <textarea name="${AttributeConst.REP_CLIENT.getValue()}" rows="3" cols="20">${report.client}</textarea>
 <br /><br />
 
-<label for="${AttributeConst.REP_CLIENT.getValue()}">進捗</label><br />
+<label for="${AttributeConst.REP_PROGRESS.getValue()}">進捗</label><br />
 <select name="下記より選択">
 <option value = "開始前">開始前</option>
 <option value = "打合せ予定">打合せ予定</option>
