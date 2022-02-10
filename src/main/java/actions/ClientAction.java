@@ -245,5 +245,4 @@ public class ClientAction extends ActionBase {
             redirect(ForwardConst.ACT_CLI, ForwardConst.CMD_INDEX);
         }
     }
-
 }
