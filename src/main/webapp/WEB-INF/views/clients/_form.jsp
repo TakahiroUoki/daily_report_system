@@ -23,8 +23,8 @@
 <input type="text" name="${AttributeConst.CLI_NAME.getValue()}" value="${client.name}" />
 <br /><br />
 
-<label for="${AttributeConst.CLI_POST.getValue()}">郵便番号</label><br />
-<input type="text" name="${AttributeConst.CLI_POST.getValue()}" value="${client.post}" />
+<label for="${AttributeConst.CLI_POSTCODE.getValue()}">郵便番号</label><br />
+<input type="text" name="${AttributeConst.CLI_POSTCODE.getValue()}" value="${client.postcode}" />
 <br /><br />
 
 <label for="${AttributeConst.CLI_ADDRESS.getValue()}">住所</label><br />

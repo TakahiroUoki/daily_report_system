@@ -46,7 +46,7 @@ public enum AttributeConst {
     CLI_ID("id"),
     CLI_NUMBER("number"),
     CLI_NAME("name"),
-    CLI_POST("post"),
+    CLI_POSTCODE("postcode"),
     CLI_ADDRESS("address"),
     CLI_TEL("tel"),
 

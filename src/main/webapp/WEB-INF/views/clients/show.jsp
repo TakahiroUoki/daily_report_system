@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <th>郵便番号</th>
-                    <td><c:out value="${client.post}" /></td>
+                    <td><c:out value="${client.postcode}" /></td>
                 </tr>
                 <tr>
                     <th>住所</th>
