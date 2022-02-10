@@ -112,7 +112,7 @@ select {
     height: 30px;
 }
 #header_menu {
-    width: 57%;
+    width: 76%;
     padding-top: 17px;
     padding-left: 3%;
     display: inline-block;
@@ -155,4 +155,13 @@ table#report_list .report_action {
 }
 h3 {
     font-size: larger;
+}
+table#client_list th {
+    width: 30%;
+    padding: 10px 2%;
+}
+
+table#client_list td {
+    width: 29%;
+    padding: 10px 2%;
 }
