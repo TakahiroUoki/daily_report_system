@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 
 import actions.views.ClientView;
+import actions.views.EmployeeView;
 import constants.AttributeConst;
 import constants.ForwardConst;
 import constants.JpaConst;
@@ -40,28 +41,31 @@ public class ClientAction extends ActionBase {
      */
     public void index() throws ServletException, IOException {
 
-        // 指定されたページ数の一覧画面に表示するデータを取得
-        int page = getPage();
-        List<ClientView> clients = service.getPerPage(page);
+        // 管理者かどうかのチェック
+        if(checkAdmin()) {
 
-        // 全ての顧客データの件数を取得
-        long clientCount = service.countAll();
+            // 指定されたページ数の一覧画面に表示するデータを取得
+            int page = getPage();
+            List<ClientView> clients = service.getPerPage(page);
 
-        putRequestScope(AttributeConst.CLIENTS, clients); // 取得した顧客データ
-        putRequestScope(AttributeConst.CLI_COUNT, clientCount); // 全ての顧客データの件数
-        putRequestScope(AttributeConst.PAGE, page); // ページ数
-        putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); // 1ページに表示するレコードの数
+            // 全ての顧客データの件数を取得
+            long clientCount = service.countAll();
 
-        // セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、セッションからは削除する
-        String flush = getSessionScope(AttributeConst.FLUSH);
-        if(flush != null) {
-            putRequestScope(AttributeConst.FLUSH, flush);
-            removeSessionScope(AttributeConst.FLUSH);
+            putRequestScope(AttributeConst.CLIENTS, clients); // 取得した顧客データ
+            putRequestScope(AttributeConst.CLI_COUNT, clientCount); // 全ての顧客データの件数
+            putRequestScope(AttributeConst.PAGE, page); // ページ数
+            putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); // 1ページに表示するレコードの数
+
+            // セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、セッションからは削除する
+            String flush = getSessionScope(AttributeConst.FLUSH);
+            if(flush != null) {
+                putRequestScope(AttributeConst.FLUSH, flush);
+                removeSessionScope(AttributeConst.FLUSH);
+            }
+
+            // 一覧画面を表示
+            forward(ForwardConst.FW_CLI_INDEX);
         }
-
-        // 一覧画面を表示
-        forward(ForwardConst.FW_CLI_INDEX);
-
 
     }
 
@@ -72,11 +76,15 @@ public class ClientAction extends ActionBase {
      */
     public void entryNew() throws ServletException, IOException {
 
-        putRequestScope(AttributeConst.TOKEN, getTokenId()); // CSRF対策用トークン
-        putRequestScope(AttributeConst.CLIENT, new ClientView()); // 空の顧客インスタンス
+        // 管理者かどうかのチェック
+        if(checkAdmin()) {
 
-        // 新規登録画面を表示
-        forward(ForwardConst.FW_CLI_NEW);
+            putRequestScope(AttributeConst.TOKEN, getTokenId()); // CSRF対策用トークン
+            putRequestScope(AttributeConst.CLIENT, new ClientView()); // 空の顧客インスタンス
+
+            // 新規登録画面を表示
+            forward(ForwardConst.FW_CLI_NEW);
+        }
     }
 
     /**
@@ -87,7 +95,7 @@ public class ClientAction extends ActionBase {
     public void create() throws ServletException, IOException {
 
         // CERF対策 tokenのチェック
-        if(checkToken()) {
+        if(checkAdmin() && checkToken()) {
 
             // パラメータの値を元に顧客情報のインスタンスを作成
             ClientView cv = new ClientView(
@@ -134,23 +142,26 @@ public class ClientAction extends ActionBase {
      */
     public void show() throws ServletException, IOException {
 
-        // idを条件に顧客データを取得する
-        ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+        // 管理者かどうかのチェック
+        if(checkAdmin()) {
 
-        if(cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
+            // idを条件に顧客データを取得する
+            ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
 
-            // データが取得できなかった、または論理削除されている場合はエラー画面を表示
-            forward(ForwardConst.FW_ERR_UNKNOWN);
-            return;
-        }else {
+            if(cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
 
-            putRequestScope(AttributeConst.CLIENT, cv); // 取得した顧客情報
+                // データが取得できなかった、または論理削除されている場合はエラー画面を表示
+                forward(ForwardConst.FW_ERR_UNKNOWN);
+                return;
+            }else {
 
-            // 詳細画面を表示
-            forward(ForwardConst.FW_CLI_SHOW);
+             putRequestScope(AttributeConst.CLIENT, cv); // 取得した顧客情報
+
+             // 詳細画面を表示
+             forward(ForwardConst.FW_CLI_SHOW);
+            }
         }
       }
-
     /**
      * 編集画面を表示する
      * @throws ServletException
@@ -158,25 +169,28 @@ public class ClientAction extends ActionBase {
      */
     public void edit() throws ServletException, IOException {
 
-        // idを条件に顧客データを取得する
-        ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+        // 管理者かどうかのチェック
+        if(checkAdmin()) {
 
-        if(cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
+            // idを条件に顧客データを取得する
+            ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
 
-            // データが取得できなかった、または論理削除されている場合はエラー画面を表示
-            forward(ForwardConst.FW_ERR_UNKNOWN);
-            return;
+            if(cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
 
-        }else {
+                // データが取得できなかった、または論理削除されている場合はエラー画面を表示
+                forward(ForwardConst.FW_ERR_UNKNOWN);
+                return;
 
-            putRequestScope(AttributeConst.TOKEN, getTokenId()); // CSRF対策用トークン
-            putRequestScope(AttributeConst.CLIENT, cv); // 取得した顧客情報
+            }else {
 
-            // 編集画面を表示する
-            forward(ForwardConst.FW_CLI_EDIT);
+                putRequestScope(AttributeConst.TOKEN, getTokenId()); // CSRF対策用トークン
+                putRequestScope(AttributeConst.CLIENT, cv); // 取得した顧客情報
+
+                // 編集画面を表示する
+                forward(ForwardConst.FW_CLI_EDIT);
+            }
         }
     }
-
     /**
      * 更新を行う
      * @throws ServletException
@@ -185,7 +199,7 @@ public class ClientAction extends ActionBase {
     public void update() throws ServletException, IOException{
 
         // CSRF対策 tokenのチェック
-        if(checkToken()) {
+        if(checkAdmin() && checkToken()) {
             // パラメータの値を元に顧客情報のインスタンスを作成
             ClientView cv = new ClientView(
                     toNumber(getRequestParam(AttributeConst.CLI_ID)),
@@ -233,7 +247,7 @@ public class ClientAction extends ActionBase {
     public void destroy() throws ServletException, IOException {
 
         //CSRF対策 tokenのチェック
-        if (checkToken()) {
+        if (checkAdmin() && checkToken()) {
 
             //idを条件に顧客データを論理削除する
             service.destroy(toNumber(getRequestParam(AttributeConst.CLI_ID)));
@@ -244,5 +258,29 @@ public class ClientAction extends ActionBase {
             //一覧画面にリダイレクト
             redirect(ForwardConst.ACT_CLI, ForwardConst.CMD_INDEX);
         }
+    }
+
+    /**
+     * ログイン中の従業員が管理者かどうかチェックし、管理者でなければエラー画面を表示
+     * true: 管理者 false: 管理者ではない
+     * @throws ServletException
+     * @throws IOException
+     */
+    private boolean checkAdmin() throws ServletException, IOException {
+
+        //セッションからログイン中の従業員情報を取得
+        EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+
+        //管理者でなければエラー画面を表示
+        if (ev.getAdminFlag() != AttributeConst.ROLE_ADMIN.getIntegerValue()) {
+
+            forward(ForwardConst.FW_ERR_UNKNOWN);
+            return false;
+
+        } else {
+
+            return true;
+        }
+
     }
 }

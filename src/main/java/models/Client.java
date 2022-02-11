@@ -62,13 +62,13 @@ public class Client {
      * 会社名(取引先名)
      */
     @Column(name = JpaConst.CLI_COL_NAME, nullable = false)
-    private String name;
+    private String clientname;
 
     /**
      * 郵便番号
      */
-    @Column(name = JpaConst.CLI_COL_POST, nullable = false)
-    private String post;
+    @Column(name = JpaConst.CLI_COL_POSTCODE, nullable = false)
+    private String postcode;
 
     /**
      * 住所

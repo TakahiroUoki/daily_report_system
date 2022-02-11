@@ -30,9 +30,27 @@ public class ClientValidator {
         }
 
         // 会社名のチェック
-        String nameError = validateName(cv.getName());
-        if(!nameError.equals("")) {
-            errors.add(nameError);
+        String clientnameError = validateClientname(cv.getClientname());
+        if(!clientnameError.equals("")) {
+            errors.add(clientnameError);
+        }
+
+        // 郵便番号のチェック
+        String postcodeError = validatePostcode(cv.getPostcode());
+        if(!postcodeError.equals("")) {
+            errors.add(postcodeError);
+        }
+
+        // 住所のチェック
+        String addressError = validateAddress(cv.getAddress());
+        if(!addressError.equals("")) {
+            errors.add(addressError);
+        }
+
+        // 電話番号のチェック
+        String telError = validateTel(cv.getTel());
+        if(!telError.equals("")) {
+            errors.add(telError);
         }
 
         return errors;
@@ -79,17 +97,56 @@ public class ClientValidator {
     }
 
     /**
-     * 氏名に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
-     * @param name 氏名
+     * 顧客名に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param clientname 顧客名
      * @return エラーメッセージ
      */
-    private static String validateName(String name) {
-        if(name == null || name.equals("")) {
-            return MessageConst.E_NONAME.getMessage();
+    private static String validateClientname(String clientname) {
+        if(clientname == null || clientname.equals("")) {
+            return MessageConst.E_NOCLIENT.getMessage();
         }
 
         // 入力値がある場合は空文字を返却
         return "";
     }
 
+    /**
+     * 郵便番号に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param postcode 郵便番号
+     * @return エラーメッセージ
+     */
+    private static String validatePostcode(String postcode) {
+        if(postcode == null || postcode.equals("")) {
+            return MessageConst.E_NOPOSTCODE.getMessage();
+        }
+
+        // 入力値がある場合は空文字を返却
+        return "";
+    }
+    /**
+     * 住所に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param address 住所
+     * @return エラーメッセージ
+     */
+    private static String validateAddress(String address) {
+        if(address == null || address.equals("")) {
+            return MessageConst.E_NOADDRESS.getMessage();
+        }
+
+        // 入力値がある場合は空文字を返却
+        return "";
+    }
+    /**
+     * 電話番号に入力値があるかをチェックし、入力値がなければエラーメッセージを返却
+     * @param tel 電話番号
+     * @return エラーメッセージ
+     */
+    private static String validateTel(String tel) {
+        if(tel == null || tel.equals("")) {
+            return MessageConst.E_NOTEL.getMessage();
+        }
+
+        // 入力値がある場合は空文字を返却
+        return "";
+    }
 }

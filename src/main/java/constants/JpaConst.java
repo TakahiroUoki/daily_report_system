@@ -36,7 +36,7 @@ public interface JpaConst {
     String CLI_COL_ID = "id"; // id
     String CLI_COL_NUMBER = "number"; // 顧客番号
     String CLI_COL_NAME = "name"; // 会社名
-    String CLI_COL_POST = "post"; // 郵便番号
+    String CLI_COL_POSTCODE = "postcode"; // 郵便番号
     String CLI_COL_ADDRESS = "address"; // 住所
     String CLI_COL_TEL = "tel"; // 電話番号
     String CLI_COL_CREATED_AT = "created_at"; // 登録日時
@@ -53,11 +53,11 @@ public interface JpaConst {
     String REP_COL_EMP = "employee_id"; // 日報を作成した従業員のid
     String REP_COL_REP_DATE = "report_date"; // いつの日報かを示す日付
     String REP_COL_TITLE = "title"; // 日報のタイトル
-    String REP_COL_CONTENT = "content"; // 日報の内容
+    String REP_COL_CLI = "client"; // 担当会社名
     String REP_COL_PROGRESS = "progress"; //進捗
+    String REP_COL_CONTENT = "content"; // 日報の内容
     String REP_COL_CREATED_AT = "created_at"; // 登録日時
     String REP_COL_UPDATED_AT = "updated_at"; // 更新日時
-    String REP_COL_CLI = "client"; // 担当会社名
 
     // Entity名
     String ENTITY_EMP = "employee"; // 従業員

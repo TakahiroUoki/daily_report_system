@@ -129,7 +129,7 @@ public class ClientService  extends ServiceBase {
            savedCli.setNumber(cv.getNumber());
        }
 
-        savedCli.setName(cv.getName()); //変更後の氏名を設定する
+        savedCli.setClientname(cv.getClientname()); //変更後の顧客名(取引先名)を設定する
         savedCli.setAddress(cv.getAddress()); // 変更後の住所を設定する
 
         //更新日時に現在時刻を設定する

@@ -30,12 +30,12 @@ public class ClientView {
     /**
      * 会社名(取引先名)
      */
-    private String name;
+    private String clientname;
 
     /**
      * 郵便番号
      */
-    private String post;
+    private String postcode;
 
     /**
      * 住所
