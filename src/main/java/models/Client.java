@@ -67,8 +67,8 @@ public class Client {
     /**
      * 郵便番号
      */
-    @Column(name = JpaConst.CLI_COL_POSTCODE, nullable = false)
-    private String postcode;
+    @Column(name = JpaConst.CLI_COL_POST, nullable = false)
+    private String post;
 
     /**
      * 住所

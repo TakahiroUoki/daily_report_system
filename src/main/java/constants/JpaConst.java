@@ -36,7 +36,7 @@ public interface JpaConst {
     String CLI_COL_ID = "id"; // id
     String CLI_COL_NUMBER = "number"; // 顧客番号
     String CLI_COL_NAME = "name"; // 会社名
-    String CLI_COL_POSTCODE = "postcode"; // 郵便番号
+    String CLI_COL_POST = "post"; // 郵便番号
     String CLI_COL_ADDRESS = "address"; // 住所
     String CLI_COL_TEL = "tel"; // 電話番号
     String CLI_COL_CREATED_AT = "created_at"; // 登録日時

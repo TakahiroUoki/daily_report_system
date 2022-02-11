@@ -35,7 +35,7 @@ public class ClientView {
     /**
      * 郵便番号
      */
-    private String postcode;
+    private String post;
 
     /**
      * 住所

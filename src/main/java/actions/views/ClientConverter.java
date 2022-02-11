@@ -24,7 +24,7 @@ public class ClientConverter {
                 cv.getId(),
                 cv.getNumber(),
                 cv.getClientname(),
-                cv.getPostcode(),
+                cv.getPost(),
                 cv.getAddress(),
                 cv.getTel(),
                 cv.getCreatedAt(),
@@ -51,7 +51,7 @@ public class ClientConverter {
                 c.getId(),
                 c.getNumber(),
                 c.getClientname(),
-                c.getPostcode(),
+                c.getPost(),
                 c.getAddress(),
                 c.getTel(),
                 c.getCreatedAt(),
@@ -88,7 +88,7 @@ public class ClientConverter {
         c.setId(cv.getId());
         c.setNumber(cv.getNumber());
         c.setClientname(cv.getClientname());
-        c.setPostcode(cv.getPostcode());
+        c.setPost(cv.getPost());
         c.setAddress(cv.getAddress());
         c.setTel(cv.getTel());
         c.setCreatedAt(cv.getCreatedAt());

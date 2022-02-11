@@ -36,9 +36,9 @@ public class ClientValidator {
         }
 
         // 郵便番号のチェック
-        String postcodeError = validatePostcode(cv.getPostcode());
-        if(!postcodeError.equals("")) {
-            errors.add(postcodeError);
+        String postError = validatePost(cv.getPost());
+        if(!postError.equals("")) {
+            errors.add(postError);
         }
 
         // 住所のチェック
@@ -115,9 +115,9 @@ public class ClientValidator {
      * @param postcode 郵便番号
      * @return エラーメッセージ
      */
-    private static String validatePostcode(String postcode) {
-        if(postcode == null || postcode.equals("")) {
-            return MessageConst.E_NOPOSTCODE.getMessage();
+    private static String validatePost(String post) {
+        if(post == null || post.equals("")) {
+            return MessageConst.E_NOPOST.getMessage();
         }
 
         // 入力値がある場合は空文字を返却
