@@ -6,7 +6,7 @@
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commCrt" value="${ForwardConst.CMD_CREATE.getValue()}" />
 
-<c:import url="/WEB-INF/views/layout/app.jsp">
+<c:import url="../layout/app.jsp">
     <c:param name="content">
         <h2>顧客 新規登録ページ</h2>
 
