@@ -30,9 +30,9 @@ public class ClientValidator {
         }
 
         // 会社名のチェック
-        String clientnameError = validateClientname(cv.getClientname());
-        if(!clientnameError.equals("")) {
-            errors.add(clientnameError);
+        String nameError = validateName(cv.getName());
+        if(!nameError.equals("")) {
+            errors.add(nameError);
         }
 
         // 郵便番号のチェック
@@ -101,8 +101,8 @@ public class ClientValidator {
      * @param clientname 顧客名
      * @return エラーメッセージ
      */
-    private static String validateClientname(String clientname) {
-        if(clientname == null || clientname.equals("")) {
+    private static String validateName(String name) {
+        if(name == null || name.equals("")) {
             return MessageConst.E_NOCLIENT.getMessage();
         }
 
