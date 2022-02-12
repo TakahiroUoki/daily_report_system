@@ -153,13 +153,12 @@ public class ClientAction extends ActionBase {
                 // データが取得できなかった、または論理削除されている場合はエラー画面を表示
                 forward(ForwardConst.FW_ERR_UNKNOWN);
                 return;
-            }else {
+            }
 
              putRequestScope(AttributeConst.CLIENT, cv); // 取得した顧客情報
 
              // 詳細画面を表示
              forward(ForwardConst.FW_CLI_SHOW);
-            }
         }
       }
     /**
@@ -181,14 +180,13 @@ public class ClientAction extends ActionBase {
                 forward(ForwardConst.FW_ERR_UNKNOWN);
                 return;
 
-            }else {
+            }
 
                 putRequestScope(AttributeConst.TOKEN, getTokenId()); // CSRF対策用トークン
                 putRequestScope(AttributeConst.CLIENT, cv); // 取得した顧客情報
 
                 // 編集画面を表示する
                 forward(ForwardConst.FW_CLI_EDIT);
-            }
         }
     }
     /**

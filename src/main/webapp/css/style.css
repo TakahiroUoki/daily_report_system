@@ -137,11 +137,11 @@ table#report_list th {
 }
 
 table#report_list .report_name {
-    width: 15%;
-    padding: 10px 2%;
+    width: 16%;
+    padding: 4px 1%;
 }
 table#report_list .report_date {
-    width: 15%;
+    width: 16%;
 }
 
 table#report_list .report_title {
@@ -149,15 +149,15 @@ table#report_list .report_title {
 }
 
 table#report_list .report_client {
-    width: 17%;
+    width: 16%;
 }
 
 table#report_list .report_progress {
-    width: 18%;
+    width: 16%;
 }
 
 table#report_list .report_action {
-    width: 9%;
+    width: 8%;
 }
 pre {
     font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
@@ -174,11 +174,4 @@ table#client_list th {
 table#client_list td {
     width: 29%;
     padding: 10px 2%;
-}
-
-table#client_list tr.row1 {
-        background-color: #f2f2f2;
-}
-table#client_list tr.row0 {
-        background-color: #ffffff;
 }

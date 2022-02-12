@@ -24,7 +24,7 @@
 <br /><br />
 
 <label for="${AttributeConst.CLI_POST.getValue()}">郵便番号</label><br />
-<input type="text" name="${AttributeConst.CLI_POST.getValue()}" value="${client.post}" />
+〒<input type="text" name="${AttributeConst.REP_DATE.getValue()}" size="10" maxlength="8" value="${client.post}" />
 <br /><br />
 
 <label for="${AttributeConst.CLI_ADDRESS.getValue()}">住所</label><br />
@@ -32,7 +32,7 @@
 <br /><br />
 
 <label for="${AttributeConst.CLI_TEL.getValue()}">代表者電話番号</label><br />
-<input type="text" name="${AttributeConst.CLI_TEL.getValue()}" value="${client.tel}" />
+<input type="text" name="${AttributeConst.CLI_TEL.getValue()}" size="10" maxlength="20" value="${client.tel}" />
 <br /><br />
 
 <input type="hidden" name="${AttributeConst.CLI_ID.getValue()}" value="${client.id}" />
