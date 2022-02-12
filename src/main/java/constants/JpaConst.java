@@ -69,8 +69,6 @@ public interface JpaConst {
     String JPQL_PARM_NUMBER = "number"; // 顧客番号
     String JPQL_PARM_PASSWORD = "password"; // パスワード
     String JPQL_PARM_EMPLOYEE = "employee"; // 従業員
-    String JPQL_PARM_PROGRESS = "progress"; //進捗
-    String JPQL_PARM_CLIENT = "client"; // 顧客
 
     // NamedQueryのnameとquery
     // 全ての従業員をidの降順に取得する
@@ -94,7 +92,7 @@ public interface JpaConst {
     // 顧客番号を条件に未削除の顧客を取得する
     String Q_CLI_GET_BY_NUMBER = ENTITY_CLI + ".getByNumber";
     String Q_CLI_GET_BY_NUMBER_DEF = "SELECT c FROM Client AS c WHERE c.deleteFlag = 0 AND c.number = :" + JPQL_PARM_NUMBER;
-    //指定した顧客番号を保持する従業員の件数を取得する
+    //指定した顧客番号を保持する顧客の件数を取得する
     String Q_CLI_COUNT_RESISTERED_BY_NUMBER = ENTITY_CLI + ".countRegisteredByNumber";
     String Q_CLI_COUNT_RESISTERED_BY_NUMBER_DEF = "SELECT COUNT(c) FROM Client AS c WHERE c.number = :" + JPQL_PARM_NUMBER;
     //全ての日報をidの降順に取得する
@@ -109,17 +107,5 @@ public interface JpaConst {
     //指定した従業員が作成した日報の件数を取得する
     String Q_REP_COUNT_ALL_MINE = ENTITY_REP + ".countAllMine";
     String Q_REP_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE;
- // 指定した進捗の日報を全件idの降順で取得する
-    String Q_REP_GET_BY_PROGRESS = ENTITY_REP + ".getByProgress";
-    String Q_REP_GET_BY_PROGRESS_DEF = "SELECT r FROM Report AS r WHERE r.progress = :" + JPQL_PARM_PROGRESS + "ORDER BY r.id DESC";
-    // 指定した進捗の日報の件数を取得する
-    String Q_REP_COUNT_RESISTERED_BY_PROGRESS = ENTITY_REP + ".countByProgress";
-    String Q_REP_COUNT_RESISTERED_BY_PROGRESS_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.progress = :" + JPQL_PARM_PROGRESS;
-    // 指定した顧客の日報を全件idの降順で取得する
-    String Q_REP_GET_BY_CLIENT = ENTITY_REP + ".getByClient";
-    String Q_REP_GET_BY_CLIENT_DEF = "SELECT r FROM Report AS r WHERE r.client = :" + JPQL_PARM_CLIENT + "ORDER BY r.id DESC";
-    // 指定した顧客の日報の件数を取得する
-    String Q_REP_COUNT_RESISTERED_BY_CLIENT = ENTITY_REP + ".countByClient";
-    String Q_REP_COUNT_RESISTERED_BY_CLIENT_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.client = :" + JPQL_PARM_CLIENT;
 
 }

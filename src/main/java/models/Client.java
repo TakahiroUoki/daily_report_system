@@ -67,7 +67,7 @@ public class Client {
     /**
      * 郵便番号
      */
-    @Column(name = JpaConst.CLI_COL_POST, nullable = false)
+    @Column(name = JpaConst.CLI_COL_POST, length = 8, nullable = false)
     private String post;
 
     /**
@@ -79,7 +79,7 @@ public class Client {
     /**
      * 電話番号
      */
-    @Column(name = JpaConst.CLI_COL_TEL, nullable = false)
+    @Column(name = JpaConst.CLI_COL_TEL, length = 20,nullable = false)
     private String tel;
 
     /**
