@@ -46,7 +46,7 @@ public class ReportView {
     /**
      * 日報の進捗
      */
-    private String progress;
+    private Integer progress;
 
     /**
      * 日報の内容

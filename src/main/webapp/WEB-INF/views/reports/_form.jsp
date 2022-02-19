@@ -31,15 +31,16 @@
 
 <label for="${AttributeConst.REP_PROGRESS.getValue()}">進捗</label><br />
 <select name="${AttributeConst.REP_PROGRESS.getValue()}" >
-<option value = "開始前">開始前</option>
-<option value = "打合せ予定">打合せ予定</option>
-<option value = "打合せ延期">打合せ延期</option>
-<option value = "打合せ確定">打合せ確定</option>
-<option value = "結果連絡待ち">結果連絡待ち</option>
-<option value = "終了(交渉可否無関係)">終了(交渉可否無関係)</option>
-<option value = "終了(交渉成功)">終了(交渉成功)</option>
-<option value = "終了(交渉失敗)">終了(交渉失敗)</option>
-<option value = "キャンセル">キャンセル</option>
+<option disabled selected>進捗を選択</option>
+<option value = "1">1.開始前</option>
+<option value = "2">2.打合せ予定</option>
+<option value = "3">3.打合せ延期</option>
+<option value = "4">4.打合せ確定</option>
+<option value = "5">4.結果連絡待ち</option>
+<option value = "6">6.終了(交渉可否無関係)</option>
+<option value = "7">7.終了(交渉成功)</option>
+<option value = "8">8.終了(交渉失敗)</option>
+<option value = "9">9.キャンセル</option>
 </select>
 <br /><br />
 

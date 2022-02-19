@@ -67,7 +67,7 @@ button {
 }
 
 #footer {
-    text-align: center;
+    text-align: right;
 }
 
 #flush_success{
@@ -138,11 +138,11 @@ table#report_list th {
 }
 
 table#report_list .report_name {
-    width: 16%;
+    width: 9%;
     padding: 4px 1%;
 }
 table#report_list .report_date {
-    width: 16%;
+    width: 14%;
 }
 
 table#report_list .report_title {
@@ -150,15 +150,15 @@ table#report_list .report_title {
 }
 
 table#report_list .report_client {
-    width: 16%;
+    width: 17%;
 }
 
 table#report_list .report_progress {
-    width: 16%;
+    width: 17%;
 }
 
 table#report_list .report_action {
-    width: 8%;
+    width: 15%;
 }
 pre {
     font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
@@ -182,4 +182,14 @@ table#client_list tr.row1 {
 }
 table#client_list tr.row0 {
         background-color: #ffffff;
+}
+
+#request.getContextPath {
+    text-align: right;
+    margin-left:auto
+}
+
+#selectProgress {
+    text-align: right;
+    margin-left:auto
 }

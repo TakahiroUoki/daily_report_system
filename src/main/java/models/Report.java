@@ -84,8 +84,8 @@ public class Report {
     /**
      * 日報の進捗
      */
-    @Column(name = JpaConst.REP_COL_PROGRESS, length = 255, nullable = false)
-    private String progress;
+    @Column(name = JpaConst.REP_COL_PROGRESS, nullable = false)
+    private Integer progress;
 
     /**
      * 日報の内容

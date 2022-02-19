@@ -112,7 +112,7 @@ public class ReportAction extends ActionBase {
                     day,
                     getRequestParam(AttributeConst.REP_TITLE),
                     getRequestParam(AttributeConst.REP_CLIENT),
-                    getRequestParam(AttributeConst.REP_PROGRESS),
+                    toNumber(getRequestParam(AttributeConst.REP_PROGRESS)),
                     getRequestParam(AttributeConst.REP_CONTENT),
                     null,
                     null);
@@ -210,7 +210,7 @@ public class ReportAction extends ActionBase {
             rv.setReportDate(toLocalDate(getRequestParam(AttributeConst.REP_DATE)));
             rv.setTitle(getRequestParam(AttributeConst.REP_TITLE));
             rv.setClient(getRequestParam(AttributeConst.REP_CLIENT));
-            rv.setProgress(getRequestParam(AttributeConst.REP_PROGRESS));
+            rv.setProgress(toNumber(getRequestParam(AttributeConst.REP_PROGRESS)));
             rv.setContent(getRequestParam(AttributeConst.REP_CONTENT));
 
             // 日報データを更新する
@@ -237,6 +237,7 @@ public class ReportAction extends ActionBase {
             }
         }
     }
+
 
 
 }
