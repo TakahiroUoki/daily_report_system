@@ -32,15 +32,15 @@
 <label for="${AttributeConst.REP_PROGRESS.getValue()}">進捗</label><br />
 <select name="${AttributeConst.REP_PROGRESS.getValue()}" >
 <option disabled selected>進捗を選択</option>
-<option value = "1">1.開始前</option>
-<option value = "2">2.打合せ予定</option>
-<option value = "3">3.打合せ延期</option>
-<option value = "4">4.打合せ確定</option>
-<option value = "5">4.結果連絡待ち</option>
-<option value = "6">6.終了(交渉可否無関係)</option>
-<option value = "7">7.終了(交渉成功)</option>
-<option value = "8">8.終了(交渉失敗)</option>
-<option value = "9">9.キャンセル</option>
+<option value="${AttributeConst.PRG_BEGIN.getIntegerValue()}"<c:if test="${report.progress == AttributeConst.PRG_BEGIN.getIntegerValue()}"> selected</c:if>>1.開始前</option>
+<option value="${AttributeConst.PRG_PLAN.getIntegerValue()}"<c:if test="${report.progress == AttributeConst.PRG_PLAN.getIntegerValue()}"> selected</c:if>>2.打合せ予定</option>
+<option value="${AttributeConst.PRG_POST.getIntegerValue()}"<c:if test="${report.progress == AttributeConst.PRG_POST.getIntegerValue()}"> selected</c:if>>3.打合せ延期</option>
+<option value="${AttributeConst.PRG_DEC.getIntegerValue()}"<c:if test="${report.progress == AttributeConst.PRG_DEC.getIntegerValue()}"> selected</c:if>>4.打合せ確定</option>
+<option value="${AttributeConst.PRG_WAIT.getIntegerValue()}"<c:if test="${report.progress == AttributeConst.PRG_WAIT.getIntegerValue()}"> selected</c:if>>5.結果連絡待ち</option>
+<option value="${AttributeConst.PRG_END.getIntegerValue()}"<c:if test="${report.progress == AttributeConst.PRG_END.getIntegerValue()}"> selected</c:if>>6.終了(交渉可否無関係)</option>
+<option value="${AttributeConst.PRG_SUC.getIntegerValue()}"<c:if test="${report.progress == AttributeConst.PRG_SUC.getIntegerValue()}"> selected</c:if>>7.終了(交渉成功)</option>
+<option value="${AttributeConst.PRG_FAIL.getIntegerValue()}"<c:if test="${report.progress == AttributeConst.PRG_FAIL.getIntegerValue()}"> selected</c:if>>8.終了(交渉失敗)</option>
+<option value="${AttributeConst.PRG_CANCEL.getIntegerValue()}"<c:if test="${report.progress == AttributeConst.PRG_CANCEL.getIntegerValue()}"> selected</c:if>>9.キャンセル</option>
 </select>
 <br /><br />
 

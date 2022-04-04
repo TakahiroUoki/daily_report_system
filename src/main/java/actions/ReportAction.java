@@ -238,6 +238,36 @@ public class ReportAction extends ActionBase {
         }
     }
 
+    /**
+     * 入力された進捗の一覧画面を表示する
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void search() throws ServletException, IOException {
 
+              //指定されたページ数の一覧画面に表示する入力された進捗の日報データを取得
+              int page = getPage();
+              Integer progress = toNumber(request.getParameter(AttributeConst.REP_PROGRESS.getValue()));
 
+              // 進捗を条件に日報データを取得する
+               List<ReportView> reports = service.getByProgressPerPage(progress,page);
+
+              // 指定進捗データの件数を取得
+              long reportsCount = service.countResisteredByProgress(progress);
+
+              putRequestScope(AttributeConst.REPORTS, reports); // 取得した進捗の日報データ
+              putRequestScope(AttributeConst.REP_COUNT, reportsCount); // 指定した進捗の日報件数
+              putRequestScope(AttributeConst.PAGE, page); //ページ数
+              putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); //1ページに表示するレコードの数
+
+              // セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、セッションからは削除する
+              String flush = getSessionScope(AttributeConst.FLUSH);
+              if(flush != null) {
+                 putRequestScope(AttributeConst.FLUSH, flush);
+                 removeSessionScope(AttributeConst.FLUSH);
+              }
+
+        //選択画面を表示
+        forward(ForwardConst.FW_REP_SEARCH);
+    }
 }

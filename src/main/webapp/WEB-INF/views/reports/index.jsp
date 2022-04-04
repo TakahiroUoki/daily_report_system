@@ -2,11 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="constants.ForwardConst" %>
+<%@ page import="constants.AttributeConst" %>
 
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commShow" value="${ForwardConst.CMD_SHOW.getValue()}" />
 <c:set var="commNew" value="${ForwardConst.CMD_NEW.getValue()}" />
+<c:set var="commSearch" value="${ForwardConst.CMD_SEARCH.getValue()}" />
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
@@ -18,6 +20,24 @@
         <h2>日報 一覧</h2>
         <table id="report_list">
             <tbody>
+               <div>
+                <form method="POST" action="<c:url value='?action=${actRep}&command=${commSearch}'/>">
+                   <select id="report_progress" name="${AttributeConst.REP_PROGRESS.getValue()}">
+                      <option disabled selected>進捗を選択</option>
+                      <!--  <option value="0">0.すべて</option> -->
+                      <option value="${AttributeConst.PRG_BEGIN.getIntegerValue()}">1.開始前</option>
+                      <option value="${AttributeConst.PRG_PLAN.getIntegerValue()}">2.打合せ予定</option>
+                      <option value="${AttributeConst.PRG_POST.getIntegerValue()}">3.打合せ延期</option>
+                      <option value="${AttributeConst.PRG_DEC.getIntegerValue()}">4.打合せ確定</option>
+                      <option value="${AttributeConst.PRG_WAIT.getIntegerValue()}">5.結果連絡待ち</option>
+                      <option value="${AttributeConst.PRG_END.getIntegerValue()}">6.終了(交渉可否無関係)</option>
+                      <option value="${AttributeConst.PRG_SUC.getIntegerValue()}">7.終了(交渉成功)</option>
+                      <option value="${AttributeConst.PRG_FAIL.getIntegerValue()}">8.終了(交渉失敗)</option>
+                      <option value="${AttributeConst.PRG_CANCEL.getIntegerValue()}">9.キャンセル</option>
+                    </select>
+                    <button type="submit" id="button">検索</button>
+                 </form>
+               </div>
                 <tr>
                     <th class="report_name">氏名</th>
                     <th class="report_date">日付</th>

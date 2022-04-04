@@ -63,7 +63,18 @@ public enum AttributeConst {
     REP_TITLE("title"),
     REP_PROGRESS("progress"),
     REP_CLIENT("client"),
-    REP_CONTENT("content");
+    REP_CONTENT("content"),
+
+    // 進捗フラグ
+    PRG_BEGIN(1),
+    PRG_PLAN(2),
+    PRG_POST(3),
+    PRG_DEC(4),
+    PRG_WAIT(5),
+    PRG_END(6),
+    PRG_SUC(7),
+    PRG_FAIL(8),
+    PRG_CANCEL(9);
 
     private final String text;
     private final Integer i;

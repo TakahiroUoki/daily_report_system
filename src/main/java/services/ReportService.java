@@ -154,4 +154,35 @@ public class ReportService extends ServiceBase {
 
     }
 
+    /**
+     * 指定した進捗の日報データを指定されたページ数の一覧画面に表示する分取得し、ReportViewのリストで返却する
+     * @param progress 進捗
+     * @param page ページ数
+     * @return 一覧画面に表示するデータのリスト
+     */
+    public List<ReportView> getByProgressPerPage(Integer progress, int page) {
+
+        List<Report> reports = em.createNamedQuery(JpaConst.Q_REP_GET_BY_PROGRESS, Report.class)
+                            .setParameter(JpaConst.JPQL_PARM_PROGRESS, progress)
+                            .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
+                            .setMaxResults(JpaConst.ROW_PER_PAGE)
+                            .getResultList();
+
+      return ReportConverter.toViewList(reports);
+    }
+
+    /**
+     * 指定した進捗の日報データの件数を取得し、返却する
+     * @param progress
+     * @return 日報データの件数
+     */
+    public long countResisteredByProgress(Integer progress) {
+
+        //指定した進捗の日報データの件数を取得する
+        long reports_count = (long) em.createNamedQuery(JpaConst.Q_REP_COUNT_RESISTERED_BY_PROGRESS, Long.class)
+                .setParameter(JpaConst.JPQL_PARM_PROGRESS, progress)
+                .getSingleResult();
+
+        return reports_count;
+    }
 }

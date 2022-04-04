@@ -59,6 +59,16 @@ public interface JpaConst {
     String REP_COL_CREATED_AT = "created_at"; // 登録日時
     String REP_COL_UPDATED_AT = "updated_at"; // 更新日時
 
+    int REP_PRG_BEGIN = 1; // 開始前
+    int REP_PRG_PLAN = 2; // 打合せ予定
+    int REP_PRG_POST = 3; // 打合せ延期
+    int REP_PRG_DEC = 4; // 打合せ確定
+    int REP_PRG_WAIT = 5; // 結果待ち
+    int REP_PRG_END = 6; // 終了(交渉可否無関係)
+    int REP_PRG_SUC = 7; // 終了(交渉成功)
+    int REP_PRG_FAIL = 8; // 終了(交渉失敗)
+    int REP_PRG_CANCEL = 9; // キャンセル
+
     // Entity名
     String ENTITY_EMP = "employee"; // 従業員
     String ENTITY_CLI = "client"; // 顧客
@@ -69,6 +79,7 @@ public interface JpaConst {
     String JPQL_PARM_NUMBER = "number"; // 顧客番号
     String JPQL_PARM_PASSWORD = "password"; // パスワード
     String JPQL_PARM_EMPLOYEE = "employee"; // 従業員
+    String JPQL_PARM_PROGRESS = "progress"; // 進捗
 
     // NamedQueryのnameとquery
     // 全ての従業員をidの降順に取得する
@@ -101,11 +112,16 @@ public interface JpaConst {
     //全ての日報の件数を取得する
     String Q_REP_COUNT = ENTITY_REP + ".count";
     String Q_REP_COUNT_DEF = "SELECT COUNT(r) FROM Report AS r";
-    //指定した従業員が作成した日報を全件idの降順で取得する
+    // 指定した進捗の日報を取得する
+    String Q_REP_GET_BY_PROGRESS = ENTITY_REP + ".getByProgress";
+    String Q_REP_GET_BY_PROGRESS_DEF = "SELECT r FROM Report AS r WHERE r.progress = :" + JPQL_PARM_PROGRESS;
+    // 指定した進捗の日報の件数を全て取得する
+    String Q_REP_COUNT_RESISTERED_BY_PROGRESS = ENTITY_REP + ".countResisteredByProgress";
+    String Q_REP_COUNT_RESISTERED_BY_PROGRESS_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.progress = :" + JPQL_PARM_PROGRESS;
+    //指定した従業員が作成した日報を取得する
     String Q_REP_GET_ALL_MINE = ENTITY_REP + ".getAllMine";
-    String Q_REP_GET_ALL_MINE_DEF = "SELECT r FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE + " ORDER BY r.id DESC";
+    String Q_REP_GET_ALL_MINE_DEF = "SELECT r FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE ;
     //指定した従業員が作成した日報の件数を取得する
     String Q_REP_COUNT_ALL_MINE = ENTITY_REP + ".countAllMine";
     String Q_REP_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE;
-
 }
