@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <th>郵便番号</th>
-                    <td><c:out value="${client.post}" /></td>
+                    <td>〒<c:out value="${client.post}" /></td>
                 </tr>
                 <tr>
                     <th>住所</th>
@@ -43,7 +43,7 @@
                 <tr>
                     <th>更新日時</th>
                     <fmt:parseDate value="${client.updatedAt}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="updateDay" type="date" />
-                    <td><fmt:formatDate value="${updateDay}" pattern="yyyy-MM-dd HH:mm;ss" /></td>
+                    <td><fmt:formatDate value="${updateDay}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                 </tr>
             </tbody>
         </table>

@@ -78,7 +78,6 @@ public class ClientAction extends ActionBase {
 
         // 管理者かどうかのチェック
         if(checkAdmin()) {
-
             putRequestScope(AttributeConst.TOKEN, getTokenId()); // CSRF対策用トークン
             putRequestScope(AttributeConst.CLIENT, new ClientView()); // 空の顧客インスタンス
 

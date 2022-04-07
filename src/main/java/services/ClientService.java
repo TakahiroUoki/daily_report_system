@@ -54,7 +54,7 @@ public class ClientService  extends ServiceBase {
             c = em.createNamedQuery(JpaConst.Q_CLI_GET_BY_NUMBER, Client.class)
                     .setParameter(JpaConst.JPQL_PARM_NUMBER, number)
                     .getSingleResult();
-        }catch (NoResultException ex ) {
+        }catch (NoResultException ex) {
         }
 
         return ClientConverter.toView(c);
@@ -130,7 +130,9 @@ public class ClientService  extends ServiceBase {
        }
 
         savedCli.setName(cv.getName()); //変更後の顧客名(取引先名)を設定する
+        savedCli.setPost(cv.getPost()); //変更後の郵便番号を設定する
         savedCli.setAddress(cv.getAddress()); // 変更後の住所を設定する
+        savedCli.setTel(cv.getTel()); //変更後の電話番号を設定する
 
         //更新日時に現在時刻を設定する
         LocalDateTime today = LocalDateTime.now();

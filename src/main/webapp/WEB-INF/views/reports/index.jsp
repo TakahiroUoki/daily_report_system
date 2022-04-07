@@ -54,7 +54,17 @@
                         <td class="report_date"><fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' /></td>
                         <td class="report_title">${report.title}</td>
                         <td class="report_client">${report.client}</td>
-                        <td class="report_progress">${report.progress}</td>
+                        <td class="report_progress"><c:choose>
+                            <c:when test="${report.progress == AttributeConst.PRG_BEGIN.getIntegerValue()}">1.開始前</c:when>
+                            <c:when test="${report.progress == AttributeConst.PRG_PLAN.getIntegerValue()}">2.打合せ予定</c:when>
+                            <c:when test="${report.progress == AttributeConst.PRG_POST.getIntegerValue()}">3.打合せ延期</c:when>
+                            <c:when test="${report.progress == AttributeConst.PRG_DEC.getIntegerValue()}">4.打合せ確定</c:when>
+                            <c:when test="${report.progress == AttributeConst.PRG_WAIT.getIntegerValue()}">5.結果連絡待ち</c:when>
+                            <c:when test="${report.progress == AttributeConst.PRG_END.getIntegerValue()}">6.終了(交渉可否無関係))</c:when>
+                            <c:when test="${report.progress == AttributeConst.PRG_SUC.getIntegerValue()}">7.終了(交渉成功)</c:when>
+                            <c:when test="${report.progress == AttributeConst.PRG_FAIL.getIntegerValue()}">8.終了(交渉失敗)</c:when>
+                            <c:otherwise>9.キャンセル</c:otherwise>
+                        </c:choose></td>
                         <td class="report_action"><a href="<c:url value='?action=${actRep}&command=${commShow}&id=${report.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>

@@ -67,7 +67,7 @@ public class Client {
     /**
      * 郵便番号
      */
-    @Column(name = JpaConst.CLI_COL_POST, length = 7,nullable = false)
+    @Column(name = JpaConst.CLI_COL_POST, length = 8,nullable = false)
     private String post;
 
     /**
