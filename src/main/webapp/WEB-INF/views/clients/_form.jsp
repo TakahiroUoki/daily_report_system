@@ -24,7 +24,7 @@
 <br /><br />
 
 <label for="${AttributeConst.CLI_POST.getValue()}">郵便番号</label><br />
-〒<input type="text" name="${AttributeConst.CLI_POST.getValue()}" size ="10" maxlength ="8" value="${client.post}" />
+〒<input type="text" name="${AttributeConst.CLI_POST.getValue()}" size ="10" maxlength ="8" pattern="^[0-9]{3}-[0-9]{4}$" value="${client.post}" />
 <br /><br />
 
 <label for="${AttributeConst.CLI_ADDRESS.getValue()}">住所</label><br />
