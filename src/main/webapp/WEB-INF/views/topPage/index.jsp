@@ -44,7 +44,7 @@
                            <c:when test="${report.progress == 3}">3.打合せ延期</c:when>
                            <c:when test="${report.progress == 4}">4.打合せ確定</c:when>
                            <c:when test="${report.progress == 5}">5.結果連絡待ち</c:when>
-                           <c:when test="${report.progress == 6}">6.終了(交渉可否無関係))</c:when>
+                           <c:when test="${report.progress == 6}">6.終了(交渉可否無関係)</c:when>
                            <c:when test="${report.progress == 7}">7.終了(交渉成功)</c:when>
                            <c:when test="${report.progress == 8}">8.終了(交渉失敗)</c:when>
                            <c:otherwise>9.キャンセル</c:otherwise>
