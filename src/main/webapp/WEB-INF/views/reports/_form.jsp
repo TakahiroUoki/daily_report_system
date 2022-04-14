@@ -25,8 +25,13 @@
 <input type="text" name="${AttributeConst.REP_TITLE.getValue()}" value="${report.title}" />
 <br /><br />
 
-<label for="${AttributeConst.REP_CLIENT.getValue()}">顧客名(取引先名)</label><br />
-<textarea name="${AttributeConst.REP_CLIENT.getValue()}" rows="3" cols="20">${report.client}</textarea>
+<label for="client">顧客名(取引先名)</label><br />
+<!--  <select name="${ResuestParam.client.id}" >
+<option disabled selected>下記より顧客を選択</option>
+<c:forEach var="client" items="${clients}" varStatus="status">
+<option value="${AttributeConst.CLI_ID.getIntegerValue()}" <c:if test="${ResuestParam.client.id == report.client.id}">selected</c:if>>${report.client.name}</option>
+</c:forEach>
+</select> -->
 <br /><br />
 
 <label for="${AttributeConst.REP_PROGRESS.getValue()}">進捗</label><br />

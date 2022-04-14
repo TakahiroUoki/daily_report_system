@@ -6,12 +6,14 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 
+import actions.views.ClientView;
 import actions.views.EmployeeView;
 import actions.views.ReportView;
 import constants.AttributeConst;
 import constants.ForwardConst;
 import constants.JpaConst;
 import constants.MessageConst;
+import services.ClientService;
 import services.ReportService;
 
 /**
@@ -21,6 +23,7 @@ import services.ReportService;
 public class ReportAction extends ActionBase {
 
     private ReportService service;
+    private ClientService service2;
 
     /**
      * メソッドを実行する
@@ -29,10 +32,12 @@ public class ReportAction extends ActionBase {
     public void process() throws ServletException, IOException {
 
         service = new ReportService();
+        service2 = new ClientService();
 
         // メソッドを実行
         invoke();
         service.close();
+        service2.close();
     }
 
     /**
@@ -105,13 +110,16 @@ public class ReportAction extends ActionBase {
             // セッションからログイン中の従業員情報を取得
             EmployeeView ev= (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
 
+            // 顧客idを条件に顧客リストを取得する
+            ClientView cv = service2.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+
             // パラメータの値をもとに日報情報のインスタンスを作成する
             ReportView rv = new ReportView(
                     null,
                     ev, // ログインしている従業員を、日報作成者として登録する
                     day,
                     getRequestParam(AttributeConst.REP_TITLE),
-                    getRequestParam(AttributeConst.REP_CLIENT),
+                    cv,
                     toNumber(getRequestParam(AttributeConst.REP_PROGRESS)),
                     getRequestParam(AttributeConst.REP_CONTENT),
                     null,
@@ -153,11 +161,10 @@ public class ReportAction extends ActionBase {
         ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
         if(rv == null) {
-            // 該当の日報データが存在しない場合はエラー画面を表示
+            // 該当の日報データまたは担当顧客が存在しない場合はエラー画面を表示
             forward(ForwardConst.FW_ERR_UNKNOWN);
 
         }else {
-
             putRequestScope(AttributeConst.REPORT, rv); // 取得した日報データ
 
             // 詳細画面を表示
@@ -178,13 +185,17 @@ public class ReportAction extends ActionBase {
         // セッションからログイン中の従業員情報を取得
         EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
 
-        if(rv == null || ev.getId() != rv.getEmployee().getId()) {
-            // 該当の日報データが存在しない、または
-            // ログインしている従業員が日報の作成者でない場合はエラー画面を表示
+        // 顧客idを条件に顧客リストを取得する
+        ClientView cv = service2.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+
+        if(rv == null || ev.getId() != rv.getEmployee().getId() || cv == null) {
+            // 該当の日報データが存在しない、ログインしている従業員が日報の作成者でない
+            // または担当顧客が存在しない場合はエラー画面を表示
             forward(ForwardConst.FW_ERR_UNKNOWN);
 
         }else {
 
+            putRequestScope(AttributeConst.CLIENT, cv); // 取得した顧客情報
             putRequestScope(AttributeConst.TOKEN, getTokenId()); // CSRF対策用トークン
             putRequestScope(AttributeConst.REPORT, rv); // 取得した日報データ
 
@@ -206,10 +217,13 @@ public class ReportAction extends ActionBase {
             // idを条件に日報データを取得する
             ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
+            // 顧客idを条件に顧客リストを取得する
+            ClientView cv = service2.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+
             // 入力された日報内容を設定する
             rv.setReportDate(toLocalDate(getRequestParam(AttributeConst.REP_DATE)));
             rv.setTitle(getRequestParam(AttributeConst.REP_TITLE));
-            rv.setClient(getRequestParam(AttributeConst.REP_CLIENT));
+            rv.setClient(cv);
             rv.setProgress(toNumber(getRequestParam(AttributeConst.REP_PROGRESS)));
             rv.setContent(getRequestParam(AttributeConst.REP_CONTENT));
 

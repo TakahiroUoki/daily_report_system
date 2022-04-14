@@ -53,7 +53,7 @@ public interface JpaConst {
     String REP_COL_EMP = "employee_id"; // 日報を作成した従業員のid
     String REP_COL_REP_DATE = "report_date"; // いつの日報かを示す日付
     String REP_COL_TITLE = "title"; // 日報のタイトル
-    String REP_COL_CLI = "client"; // 担当会社名
+    String REP_COL_CLI = "client_id"; // 担当顧客のid
     String REP_COL_PROGRESS = "progress"; //進捗
     String REP_COL_CONTENT = "content"; // 日報の内容
     String REP_COL_CREATED_AT = "created_at"; // 登録日時

@@ -84,8 +84,8 @@ public class Report {
     /**
      * 担当顧客
      */
-    @Column(name = JpaConst.REP_COL_CLI, length = 255, nullable = false)
-    private String client;
+    @Column(name = JpaConst.REP_COL_CLI, nullable = false)
+    private Client client;
 
     /**
      * 日報の進捗

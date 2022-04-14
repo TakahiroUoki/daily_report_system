@@ -53,7 +53,7 @@
                         <td class="report_name"><c:out value="${report.employee.name}" /></td>
                         <td class="report_date"><fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' /></td>
                         <td class="report_title">${report.title}</td>
-                        <td class="report_client">${report.client}</td>
+                        <td class="report_client">${report.client.name}</td>
                         <td class="report_progress"><c:choose>
                             <c:when test="${report.progress == AttributeConst.PRG_BEGIN.getIntegerValue()}">1.開始前</c:when>
                             <c:when test="${report.progress == AttributeConst.PRG_PLAN.getIntegerValue()}">2.打合せ予定</c:when>

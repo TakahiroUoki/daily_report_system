@@ -41,7 +41,7 @@ public class ReportView {
     /**
      * 担当顧客
      */
-    private String client;
+    private ClientView client;
 
     /**
      * 日報の進捗

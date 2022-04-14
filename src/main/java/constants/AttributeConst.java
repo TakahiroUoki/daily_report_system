@@ -62,8 +62,10 @@ public enum AttributeConst {
     REP_DATE("report_date"),
     REP_TITLE("title"),
     REP_PROGRESS("progress"),
-    REP_CLIENT("client"),
     REP_CONTENT("content"),
+
+    // 担当顧客
+    SELECT_CLIENT("select_client"),
 
     // 進捗フラグ
     PRG_BEGIN(1),
