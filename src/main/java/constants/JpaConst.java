@@ -33,7 +33,7 @@ public interface JpaConst {
     // 顧客テーブル
     String TABLE_CLI = "clients"; // テーブル名
     // 顧客テーブルカラム
-    String CLI_COL_ID = "client_id"; // id
+    String CLI_COL_ID = "id"; // id
     String CLI_COL_NUMBER = "number"; // 顧客番号
     String CLI_COL_NAME = "name"; // 会社名
     String CLI_COL_POST = "post"; // 郵便番号
@@ -97,7 +97,7 @@ public interface JpaConst {
     String Q_EMP_COUNT_RESISTERED_BY_CODE_DEF = "SELECT COUNT(e) FROM Employee AS e WHERE e.code = :" + JPQL_PARM_CODE;
     // すべての顧客をidの降順に取得する
     String Q_CLI_GET_ALL = ENTITY_CLI + ".getAll"; // name
-    String Q_CLI_GET_ALL_DEF = "SELECT c FROM Client AS c ORDER BY c.clientId DESC"; //query
+    String Q_CLI_GET_ALL_DEF = "SELECT c FROM Client AS c ORDER BY c.id DESC"; //query
     // 全ての顧客の件数を取得する
     String Q_CLI_COUNT = ENTITY_CLI + ".count";
     String Q_CLI_COUNT_DEF = "SELECT COUNT(c) FROM Client AS c";
@@ -109,7 +109,7 @@ public interface JpaConst {
     String Q_CLI_COUNT_RESISTERED_BY_NUMBER_DEF = "SELECT COUNT(c) FROM Client AS c WHERE c.number = :" + JPQL_PARM_NUMBER;
     // 未削除の顧客IDと顧客名を取得する
     String Q_CLI_GET_NAMELIST = ENTITY_CLI + ".getByNamelist";
-    String Q_CLI_GET_NAMELIST_DEF = "SELECT c FROM Client AS c WHERE c.deleteFlag = 0 ORDER BY c.clientId ASC";
+    String Q_CLI_GET_NAMELIST_DEF = "SELECT c FROM Client AS c WHERE c.deleteFlag = 0 ORDER BY c.id ASC";
     //全ての日報をidの降順に取得する
     String Q_REP_GET_ALL = ENTITY_REP + ".getAll";
     String Q_REP_GET_ALL_DEF = "SELECT r FROM Report AS r ORDER BY r.id DESC";

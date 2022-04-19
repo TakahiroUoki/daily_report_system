@@ -20,7 +20,7 @@ public class ClientView {
     /**
      * 顧客id
      */
-    private Integer clientId;
+    private Integer id;
 
     /**
      * 顧客番号

@@ -12,7 +12,7 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
 
-        <h2>clientId : ${client.clientId} の顧客情報 編集ページ</h2>
+        <h2>id : ${client.id} の顧客情報 編集ページ</h2>
         <form method="POST" action="<c:url value='?action=${action}&command=${commUpd}' />">
             <c:import url="_form.jsp" />
         </form>
@@ -21,7 +21,7 @@
             <a href="#" onclick="confirmDestroy();">この顧客情報を削除する</a>
         </p>
         <form method="POST" action="<c:url value='?action=${action}&command=${commDel}'/>">
-            <input type="hidden" name="${AttributeConst.CLI_ID.getValue()}" value="${client.clientId}" />
+            <input type="hidden" name="${AttributeConst.CLI_ID.getValue()}" value="${client.id}" />
             <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
         </form>
         <script>

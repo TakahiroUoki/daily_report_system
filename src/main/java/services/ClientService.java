@@ -21,7 +21,7 @@ public class ClientService  extends ServiceBase {
      * @param page ページ数
      * @return 表示するデータのリスト
      */
-    public List<ClientView> getPerPage(int page){
+    public List<ClientView> getAllPerPage(int page){
         List<Client> clients = em.createNamedQuery(JpaConst.Q_CLI_GET_ALL, Client.class)
                 .setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))
                 .setMaxResults(JpaConst.ROW_PER_PAGE)
@@ -61,12 +61,12 @@ public class ClientService  extends ServiceBase {
     }
 
     /**
-     * clientIdを条件に取得したデータをClientViewのインスタンスで返却する
-     * @param clientId
+     * idを条件に取得したデータをClientViewのインスタンスで返却する
+     * @param id
      * @return 取得データのインスタンス
      */
-    public ClientView findOne(int clientId) {
-        Client c = findOneInternal(clientId);
+    public ClientView findOne(int id) {
+        Client c = findOneInternal(id);
         return ClientConverter.toView(c);
     }
 
@@ -116,7 +116,7 @@ public class ClientService  extends ServiceBase {
     public List<String> update(ClientView cv) {
 
         //idを条件に登録済みの従業員情報を取得する
-       ClientView savedCli = findOne(cv.getClientId());
+       ClientView savedCli = findOne(cv.getId());
 
        boolean validateNumber = false;
        if(!savedCli.getNumber().equals(cv.getNumber())) {
@@ -150,13 +150,13 @@ public class ClientService  extends ServiceBase {
     }
 
     /**
-     * clientIdを条件に顧客データを論理削除する
-     * @param clientId
+     * idを条件に顧客データを論理削除する
+     * @param id
      */
-    public void destroy(Integer clientId) {
+    public void destroy(Integer id) {
 
         // idを条件に登録済みの顧客情報を取得する
-        ClientView savedCli = findOne(clientId);
+        ClientView savedCli = findOne(id);
 
         // 更新日時に現在時刻を設定
         LocalDateTime today = LocalDateTime.now();
@@ -181,7 +181,7 @@ public class ClientService  extends ServiceBase {
         if(number != null && !number.equals("")) {
             ClientView cv = findOne(number);
 
-            if(cv != null && cv.getClientId() != null) {
+            if(cv != null && cv.getId() != null) {
 
                 // データが取得できた場合、認証成功
                 isValidClient = true;
@@ -193,12 +193,12 @@ public class ClientService  extends ServiceBase {
     }
 
     /**
-     * clientIdを条件にデータを1件取得し、Clientのインスタンスで返却する
-     * @param clientId
+     * idを条件にデータを1件取得し、Clientのインスタンスで返却する
+     * @param id
      * @return 取得データのインスタンス
      */
-    private Client findOneInternal(int clientId) {
-        Client c = em.find(Client.class, clientId);
+    private Client findOneInternal(int id) {
+        Client c = em.find(Client.class, id);
 
         return c;
     }
@@ -223,7 +223,7 @@ public class ClientService  extends ServiceBase {
     private void updateInternal(ClientView cv) {
 
         em.getTransaction().begin();
-        Client c = findOneInternal(cv.getClientId());
+        Client c = findOneInternal(cv.getId());
         ClientConverter.copyViewToModel(c, cv);
         em.getTransaction().commit();
 

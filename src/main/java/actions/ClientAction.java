@@ -47,7 +47,7 @@ public class ClientAction extends ActionBase {
 
             // 指定されたページ数の一覧画面に表示するデータを取得
             int page = getPage();
-            List<ClientView> clients = service.getPerPage(page);
+            List<ClientView> clients = service.getAllPerPage(page);
 
             // 全ての顧客データの件数を取得
             long clientCount = service.countAll();
@@ -145,11 +145,9 @@ public class ClientAction extends ActionBase {
         // 管理者かどうかのチェック
         if(checkAdmin()) {
 
-            // clientIdを条件に顧客データを取得する
+            // idを条件に顧客データを取得する
             ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
 
-            System.out.println("CLIIDを表示");
-            System.out.println(getRequestParam(AttributeConst.CLI_ID));
             if(cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
 
                 // データが取得できなかった、または論理削除されている場合はエラー画面を表示

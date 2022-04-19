@@ -34,6 +34,6 @@
 <label for="${AttributeConst.CLI_TEL.getValue()}">代表者電話番号</label><br />
 <input type="text" name="${AttributeConst.CLI_TEL.getValue()}" size="10" maxlength="20" value="${client.tel}" />
 <br /><br />
-<input type="hidden" name="${AttributeConst.CLI_ID.getValue()}" value="${client.clientId}" />
+<input type="hidden" name="${AttributeConst.CLI_ID.getValue()}" value="${client.id}" />
 <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
 <button type="submit">投稿</button>

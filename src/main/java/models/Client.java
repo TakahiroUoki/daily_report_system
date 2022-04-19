@@ -53,7 +53,7 @@ public class Client {
     @Id
     @Column(name = JpaConst.CLI_COL_ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer clientId;
+    private Integer id;
 
     /**
      * 顧客番号

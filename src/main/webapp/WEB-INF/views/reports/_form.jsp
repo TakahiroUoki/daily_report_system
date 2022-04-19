@@ -32,8 +32,8 @@
     <select id="client" name="${AttributeConst.CLI_ID.getValue()}">
         <option disabled selected>下記より顧客を選択</option>
         <c:forEach var="client" items="${clients}" varStatus="status">
-            <option value="${client.clientId}">
-                <c:out value="${client.clientId}" />
+            <option value="${client.id}">
+                <c:out value="${client.id}" />
                 <c:out value="${client.name}" />
             </option>
         </c:forEach>

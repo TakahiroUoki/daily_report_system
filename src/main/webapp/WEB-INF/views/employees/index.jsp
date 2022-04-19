@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="constants.AttributeConst"%>
 <%@ page import="constants.ForwardConst"%>
@@ -35,7 +34,8 @@
                                 <c:otherwise>
                                     <a href="<c:url value='?action=${actEmp}&command=${commShow}&id=${employee.id}' />">詳細を見る</a>
                                 </c:otherwise>
-                            </c:choose></td>
+                            </c:choose>
+                       </td>
                     </tr>
                 </c:forEach>
             </tbody>
