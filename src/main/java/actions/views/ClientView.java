@@ -18,9 +18,9 @@ import lombok.Setter;
 public class ClientView {
 
     /**
-     * id
+     * 顧客id
      */
-    private Integer id;
+    private Integer clientId;
 
     /**
      * 顧客番号

@@ -34,7 +34,10 @@ import lombok.Setter;
             query = JpaConst.Q_CLI_GET_BY_NUMBER_DEF),
     @NamedQuery(
             name = JpaConst.Q_CLI_COUNT_RESISTERED_BY_NUMBER,
-            query = JpaConst.Q_CLI_COUNT_RESISTERED_BY_NUMBER_DEF)
+            query = JpaConst.Q_CLI_COUNT_RESISTERED_BY_NUMBER_DEF),
+    @NamedQuery(
+            name = JpaConst.Q_CLI_GET_NAMELIST,
+            query = JpaConst.Q_CLI_GET_NAMELIST_DEF)
 })
 
 @Getter // 全てのクラスフィールドについてgetterを自動生成する(Lombok)
@@ -50,7 +53,7 @@ public class Client {
     @Id
     @Column(name = JpaConst.CLI_COL_ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer clientId;
 
     /**
      * 顧客番号

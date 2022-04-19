@@ -31,6 +31,7 @@ public class ClientAction extends ActionBase {
 
         // メソッドを実行
         invoke();
+
         service.close();
     }
 
@@ -144,9 +145,11 @@ public class ClientAction extends ActionBase {
         // 管理者かどうかのチェック
         if(checkAdmin()) {
 
-            // idを条件に顧客データを取得する
+            // clientIdを条件に顧客データを取得する
             ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
 
+            System.out.println("CLIIDを表示");
+            System.out.println(getRequestParam(AttributeConst.CLI_ID));
             if(cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
 
                 // データが取得できなかった、または論理削除されている場合はエラー画面を表示
@@ -231,8 +234,6 @@ public class ClientAction extends ActionBase {
                 // 一覧画面にリダイレクト
                 redirect(ForwardConst.ACT_CLI, ForwardConst.CMD_INDEX);
             }
-
-
         }
     }
 

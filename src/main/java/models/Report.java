@@ -84,7 +84,8 @@ public class Report {
     /**
      * 担当顧客
      */
-    @Column(name = JpaConst.REP_COL_CLI, nullable = false)
+    @ManyToOne
+    @JoinColumn(name = JpaConst.REP_COL_CLI, nullable = true)
     private Client client;
 
     /**

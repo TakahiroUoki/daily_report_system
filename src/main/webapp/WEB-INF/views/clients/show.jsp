@@ -11,7 +11,7 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
 
-        <h2>id : ${client.id} の顧客情報 詳細ページ</h2>
+        <h2>clientId : ${client.clientId} の顧客情報 詳細ページ</h2>
 
         <table>
             <tbody>
@@ -49,7 +49,7 @@
         </table>
 
             <p>
-                <a href="<c:url value='?action=${actCli}&command=${commEdit}&id=${client.id}' />">この顧客情報を編集する</a>
+                <a href="<c:url value='?action=${actCli}&command=${commEdit}&clientId=${client.clientId}'/>">この顧客情報を編集する</a>
             </p>
 
         <p>

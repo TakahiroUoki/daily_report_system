@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="constants.AttributeConst" %>
-<%@ page import="constants.ForwardConst" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="constants.AttributeConst"%>
+<%@ page import="constants.ForwardConst"%>
 
 <c:set var="actEmp" value="${ForwardConst.ACT_EMP.getValue()}" />
 <c:set var="commShow" value="${ForwardConst.CMD_SHOW.getValue()}" />
@@ -27,16 +28,14 @@
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${employee.code}" /></td>
                         <td><c:out value="${employee.name}" /></td>
-                        <td>
-                            <c:choose>
+                        <td><c:choose>
                                 <c:when test="${employee.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">
-                                    （削除済み）
+                                   (削除済み）
                                 </c:when>
                                 <c:otherwise>
                                     <a href="<c:url value='?action=${actEmp}&command=${commShow}&id=${employee.id}' />">詳細を見る</a>
                                 </c:otherwise>
-                            </c:choose>
-                        </td>
+                            </c:choose></td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -55,7 +54,9 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='?action=${actEmp}&command=${commNew}' />">新規従業員の登録</a></p>
+        <p>
+            <a href="<c:url value='?action=${actEmp}&command=${commNew}' />">新規従業員の登録</a>
+        </p>
 
     </c:param>
 </c:import>

@@ -21,7 +21,7 @@ public class ClientConverter {
     public static Client toModel(ClientView cv) {
 
         return new Client(
-                cv.getId(),
+                cv.getClientId(),
                 cv.getNumber(),
                 cv.getName(),
                 cv.getPost(),
@@ -48,7 +48,7 @@ public class ClientConverter {
         }
 
         return new ClientView(
-                c.getId(),
+                c.getClientId(),
                 c.getNumber(),
                 c.getName(),
                 c.getPost(),
@@ -85,7 +85,7 @@ public class ClientConverter {
      * @param cv Viewモデル(コピー元)
      */
     public static void copyViewToModel(Client c, ClientView cv) {
-        c.setId(cv.getId());
+        c.setClientId(cv.getClientId());
         c.setNumber(cv.getNumber());
         c.setName(cv.getName());
         c.setPost(cv.getPost());

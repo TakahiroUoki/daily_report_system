@@ -43,14 +43,14 @@ public enum AttributeConst {
     CLIENT("client"),
     CLIENTS("clients"),
     CLI_COUNT("clients_count"),
-    CLI_ID("id"),
+    CLI_ID("client_id"),
     CLI_NUMBER("number"),
     CLI_NAME("name"),
     CLI_POST("post"),
     CLI_ADDRESS("address"),
     CLI_TEL("tel"),
 
-    // 削除フラグ
+    // 削除フラグ(従業員、顧客共通)
     DEL_FLAG_TRUE(1),
     DEL_FLAG_FALSE(0),
 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="constants.AttributeConst" %>
-<%@ page import="constants.ForwardConst" %>
+<%@ page import="constants.AttributeConst"%>
+<%@ page import="constants.ForwardConst"%>
 
 <c:set var="action" value="${ForwardConst.ACT_EMP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
@@ -13,19 +13,15 @@
 
         <h2>id : ${employee.id} の従業員情報 編集ページ</h2>
         <p>（パスワードは変更する場合のみ入力してください）</p>
-        <form method="POST"
-            action="<c:url value='?action=${action}&command=${commUpd}' />">
+        <form method="POST" action="<c:url value='?action=${action}&command=${commUpd}' />">
             <c:import url="_form.jsp" />
         </form>
 
-        <p>
-            <a href="#" onclick="confirmDestroy();">この従業員情報を削除する</a>
-        </p>
-        <form method="POST"
-            action="<c:url value='?action=${action}&command=${commDel}' />">
-            <input type="hidden" name="${AttributeConst.EMP_ID.getValue()}" value="${employee.id}" />
-            <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
+        <p><a href="#" onclick="confirmDestroy();">この従業員情報を削除する</a></p>
+        <form method="POST" action="<c:url value='?action=${action}&command=${commDel}' />">
+            <input type="hidden" name="${AttributeConst.EMP_ID.getValue()}" value="${employee.id}" /> <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
         </form>
+
         <script>
             function confirmDestroy() {
                 if (confirm("本当に削除してよろしいですか？")) {

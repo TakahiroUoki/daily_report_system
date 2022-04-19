@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="constants.AttributeConst" %>
-<%@ page import="constants.ForwardConst" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="constants.AttributeConst"%>
+<%@ page import="constants.ForwardConst"%>
 
 <c:set var="action" value="${ForwardConst.ACT_CLI.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
@@ -11,18 +12,16 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
 
-        <h2>id : ${client.id} の顧客情報 編集ページ</h2>
-        <form method="POST"
-            action="<c:url value='?action=${action}&command=${commUpd}' />">
+        <h2>clientId : ${client.clientId} の顧客情報 編集ページ</h2>
+        <form method="POST" action="<c:url value='?action=${action}&command=${commUpd}' />">
             <c:import url="_form.jsp" />
         </form>
 
         <p>
             <a href="#" onclick="confirmDestroy();">この顧客情報を削除する</a>
         </p>
-        <form method="POST"
-            action="<c:url value='?action=${action}&command=${commDel}' />">
-            <input type="hidden" name="${AttributeConst.CLI_ID.getValue()}" value="${client.id}" />
+        <form method="POST" action="<c:url value='?action=${action}&command=${commDel}'/>">
+            <input type="hidden" name="${AttributeConst.CLI_ID.getValue()}" value="${client.clientId}" />
             <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
         </form>
         <script>
